@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_settings"
-        android:title="..."
+        android:title="@string/settings"
         app:showAsAction="always">
         <menu>
             <item
-                android:id="@+id/action_sub_setting1"
-                android:title="Sub Setting 1"/>
+                android:id="@+id/video_add"
+                android:title="@string/add_video"/>
             <item
-                android:id="@+id/action_sub_setting2"
-                android:title="Sub Setting 2"/>
+                android:id="@+id/category_add"
+                android:title="@string/add_category"/>
+            <item
+                android:id="@+id/video_list"
+                android:title="@string/video_list"/>
         </menu>
     </item>
 </menu>

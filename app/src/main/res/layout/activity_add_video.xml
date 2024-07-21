@@ -6,30 +6,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".addvideo">
+    tools:context=".page.AddVideo">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="title" />
+        android:text="@string/Video_name" />
 
     <EditText
-        android:id="@+id/valuetitle"
+        android:id="@+id/title_video"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Titre" />
+        android:text="@string/Video_name" />
 
     <TextView
         android:id="@+id/url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="TextView" />
+        android:text="@string/url" />
 
     <EditText
         android:id="@+id/valueurl"
@@ -38,7 +38,14 @@
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:inputType="text"
-        android:text="url" />
+        android:text="@string/url" />
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/category" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -51,6 +58,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:text="Button" />
+        android:text="@string/submit_add" />
 
 </LinearLayout>

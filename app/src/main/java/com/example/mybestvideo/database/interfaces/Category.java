@@ -16,4 +16,8 @@ public class Category {
     public Category(String categorie) {
         this.categorie = categorie;
     }
+
+    public String getName() {
+        return  categorie;
+    }
 }
