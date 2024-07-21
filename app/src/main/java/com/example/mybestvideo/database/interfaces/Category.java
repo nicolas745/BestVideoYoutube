@@ -12,12 +12,15 @@ public class Category {
     @ColumnInfo(name = "categorie")
     public String categorie;
 
-    // Constructeur
     public Category(String categorie) {
         this.categorie = categorie;
     }
 
     public String getName() {
-        return  categorie;
+        return categorie;
+    }
+
+    public int getId() {
+        return id;
     }
 }

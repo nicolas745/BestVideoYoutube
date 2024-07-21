@@ -20,9 +20,8 @@ import com.example.mybestvideo.page.AddVideo;
 import com.example.mybestvideo.page.ListVideo;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int VIDEO_ADD_ID = R.id.video_add;
-    private static final int CATEGORY_ADD_ID = R.id.category_add;
-    private static final int VIDEO_LIST_ID = R.id.video_list;
+
+    private String page = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

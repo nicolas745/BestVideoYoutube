@@ -1,4 +1,4 @@
-package com.example.mybestvideo;
+package com.example.mybestvideo.database;
 
 import android.content.Context;
 
@@ -8,23 +8,24 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.mybestvideo.database.Dao.CategoryDao;
+import com.example.mybestvideo.database.Dao.VideoDao;
+import com.example.mybestvideo.database.interfaces.Video;
 import com.example.mybestvideo.database.interfaces.Category;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {Category.class}, version = 1)
-public abstract class DBcategory extends RoomDatabase {
-    public abstract CategoryDao categoryDao();
+@Database(entities = {Video.class, Category.class}, version = 1)
+public abstract class DBVideo extends RoomDatabase {
+    public abstract VideoDao videoDao();
 
-    private static volatile DBcategory INSTANCE;
+    private static volatile DBVideo INSTANCE;
 
-    public static DBcategory getDatabase(final Context context) {
+    public static DBVideo getDatabase(final Context context) {
         if (INSTANCE == null) {
-            synchronized (DBcategory.class) {
+            synchronized (DBVideo.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    DBcategory.class, "database-name")
+                                    DBVideo.class, "video-database")
                             .addCallback(sRoomDatabaseCallback)
                             .build();
                 }
@@ -33,14 +34,14 @@ public abstract class DBcategory extends RoomDatabase {
         return INSTANCE;
     }
 
-    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
             // Insertion des valeurs par défaut
             Executors.newSingleThreadExecutor().execute(() -> {
-                CategoryDao dao = INSTANCE.categoryDao();
-                dao.insertAll(new Category("Default 1"), new Category("Default 2"));
+                VideoDao dao = INSTANCE.videoDao();
+                // Insérez ici des valeurs par défaut si nécessaire
             });
         }
     };

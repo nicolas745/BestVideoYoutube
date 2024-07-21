@@ -18,7 +18,7 @@ public interface CategoryDao {
     Category findById(int categoryId);
 
     @Insert
-    void insertAll(Category... categories);
+    long[] insertAll(Category... categories);
 
     @Delete
     void delete(Category category);

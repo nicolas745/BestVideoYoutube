@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.mybestvideo.DBcategory;
 import com.example.mybestvideo.R;
+import com.example.mybestvideo.database.DBcategory;
 import com.example.mybestvideo.database.Dao.CategoryDao;
 import com.example.mybestvideo.database.interfaces.Category;
 
