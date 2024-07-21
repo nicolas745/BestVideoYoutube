@@ -93,6 +93,12 @@ public class AddVideo extends Fragment {
                         Video video = new Video(title, url, (int) id_select);
                         try {
                             videoDao.insertAll(video);
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getActivity(), "add video sucefull", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         } catch (Exception e) {
                             Log.e("AddVideo", "Error inserting video", e);
                         }

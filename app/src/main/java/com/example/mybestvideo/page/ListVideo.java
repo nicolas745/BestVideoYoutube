@@ -78,7 +78,7 @@ public class ListVideo extends Fragment {
 
                             Log.d("video size", videos.size()+"");
                             for (Video video : videos) {
-                                videoItemList.add(new VideoItem(video.name, video.url, video.id));
+                                videoItemList.add(new VideoItem(video.name, "https://youtu.be/"+video.url, video.id));
                             }
                             // Mise à jour de l'interface utilisateur sur le thread principal
                             new Handler(Looper.getMainLooper()).post(() -> {

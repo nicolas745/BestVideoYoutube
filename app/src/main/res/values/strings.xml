@@ -7,5 +7,5 @@
     <string name="Video_name">video name</string>
     <string name="category">category</string>
     <string name="submit_add">add</string>
-    <string name="url">url video</string>
+    <string name="url">id video Youtube</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.mybestvideo.page;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.example.mybestvideo.R;
 
 public class showvideo extends Fragment {
-    private static String video_url = "https://www.youtube.com/watch?v=VOTRE_VIDEO_ID";
+    private static String video_url = "https://www.youtube.com";
 
     public showvideo(String url){
         video_url = url;
@@ -32,7 +33,7 @@ public class showvideo extends Fragment {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
-
+        Log.d("url",video_url);
         webView.loadUrl(video_url);
 
         return view;
