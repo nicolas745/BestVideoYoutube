@@ -11,8 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.example.mybestvideo.LoadFragment;
 import com.example.mybestvideo.R;
 import com.example.mybestvideo.database.DBVideo;
 import com.example.mybestvideo.database.interfaces.Video;
@@ -35,14 +38,16 @@ public class AddVideo extends Fragment {
     private EditText urlEditText;
     private Spinner categorySpinner;
     private int id_select;
+
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DBcategory bdC = DBcategory.getDatabase(getContext());
         categoryDao = bdC.categoryDao();
         DBVideo DBV = DBVideo.getDatabase(getContext());
         videoDao = DBV.videoDao();
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,11 +79,18 @@ public class AddVideo extends Fragment {
         titleVideoEditText = view.findViewById(R.id.title_video);
         urlEditText = view.findViewById(R.id.valueurl);
         categorySpinner = view.findViewById(R.id.spinner);
-
-        Button buttonClickMe = view.findViewById(R.id.submit_video_add);
-        buttonClickMe.setOnClickListener(new View.OnClickListener(){
+        Button buttonCall = view.findViewById(R.id.cancel_video_add);
+        buttonCall.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
+                new LoadFragment(getParentFragmentManager()).load(new ListVideo());
+            }
+        });
+
+        Button buttonsumit = view.findViewById(R.id.submit_video_add);
+        buttonsumit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 String title = titleVideoEditText.getText().toString().trim();
                 String url = urlEditText.getText().toString().trim();
 
@@ -90,13 +102,13 @@ public class AddVideo extends Fragment {
                 if (!title.isEmpty() && !url.isEmpty()) {
 
                     Executors.newSingleThreadExecutor().execute(() -> {
-                        Video video = new Video(title, url, (int) id_select);
+                        Video video = new Video(title, url, categoryId);
                         try {
                             videoDao.insertAll(video);
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(getActivity(), "add video sucefull", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "Video added successfully", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         } catch (Exception e) {
@@ -104,7 +116,7 @@ public class AddVideo extends Fragment {
                         }
                     });
                 } else {
-                    Toast.makeText(getActivity(), "empty input", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -117,12 +129,5 @@ public class AddVideo extends Fragment {
             itemsList.add(new SpinnerItem(category.getName(), category.getId()));
         }
         return itemsList.toArray(new SpinnerItem[0]);
-    }
-    private String[] convertCategoryNamesToArray(List<Category> categories) {
-        List<String> categoryNamesList = new ArrayList<>();
-        for (Category category : categories) {
-            categoryNamesList.add(category.getName());
-        }
-        return categoryNamesList.toArray(new String[0]);
     }
 }

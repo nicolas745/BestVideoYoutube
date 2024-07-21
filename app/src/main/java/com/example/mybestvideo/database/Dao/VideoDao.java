@@ -1,5 +1,6 @@
 package com.example.mybestvideo.database.Dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -12,6 +13,8 @@ import java.util.List;
 public interface VideoDao {
     @Insert
     void insertAll(Video... videos);
+    @Query("SELECT * FROM video WHERE id = :id")
+    LiveData<Video> selectById(int id);
 
     @Query("SELECT * FROM video")
     List<Video> getAllVideos();

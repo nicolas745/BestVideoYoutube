@@ -20,7 +20,7 @@ import com.example.mybestvideo.page.AddVideo;
 import com.example.mybestvideo.page.ListVideo;
 
 public class MainActivity extends AppCompatActivity {
-
+    LoadFragment loadFragment;
     private String page = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +34,10 @@ public class MainActivity extends AppCompatActivity {
         });
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        loadFragment(new ListVideo());
+        loadFragment = new LoadFragment(getSupportFragmentManager());
+        loadFragment.load(new ListVideo());
     }
 
-    private void loadFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
             */
         if (id == R.id.video_add) {
-            loadFragment(new AddVideo());
+            loadFragment.load(new AddVideo());
         } else if (id == R.id.category_add) {
-            loadFragment(new AddCategory());
+            loadFragment.load(new AddCategory());
         }else if(id == R.id.video_list){
-            loadFragment(new ListVideo());
+            loadFragment.load(new ListVideo());
         } else {
             return super.onOptionsItemSelected(item);
         }

@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.mybestvideo.LoadFragment;
 import com.example.mybestvideo.R;
 
 public class showvideo extends Fragment {
@@ -29,6 +31,15 @@ public class showvideo extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_video, container, false);
 
+        /*Button del = view.findViewById(R.id.delvideo);
+        del.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                new LoadFragment(getParentFragmentManager()).load(new ListVideo());
+            }
+        });
+        */
         WebView webView = view.findViewById(R.id.webview);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);

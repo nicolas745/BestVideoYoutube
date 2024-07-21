@@ -8,4 +8,6 @@
     <string name="category">category</string>
     <string name="submit_add">add</string>
     <string name="url">id video Youtube</string>
+    <string name="cancel_add" >annuler</string>
+    <string name="delvideo">remove\n</string>
 </resources>

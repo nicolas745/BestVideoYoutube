@@ -1,11 +1,13 @@
 package com.example.mybestvideo.item;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -51,11 +53,12 @@ public class VideoItemAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_2, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
         }
 
-        TextView titreView = convertView.findViewById(android.R.id.text1);
-        TextView texteView = convertView.findViewById(android.R.id.text2);
+        TextView titreView = convertView.findViewById(R.id.titreView);
+        TextView texteView = convertView.findViewById(R.id.texteView);
+        Button button = convertView.findViewById(R.id.button1);
 
         VideoItem videoItem = videoItems.get(position);
         titreView.setText(videoItem.getTitre());
@@ -63,7 +66,11 @@ public class VideoItemAdapter extends BaseAdapter {
 
         // Ajouter un écouteur de clic à chaque élément
         convertView.setOnClickListener(v -> {
-            Log.d("click", "j'ai cliqué sur : " + videoItem.getid());
+        });
+
+        // Ajouter un écouteur de clic au bouton
+        button.setOnClickListener(v -> {
+            Log.d("button", "Button cliqué sur : " + videoItem.getid());
             loadFragment(new showvideo(videoItem.getTexte()));
         });
 
