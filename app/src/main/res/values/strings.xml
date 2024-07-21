@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">MybestVideo</string>
+    <string name="app_name">My Best Video</string>
+    <string name="settings">Settings</string>
 </resources>
