@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.mybestvideo">
+
+    <!-- Ajouter les permissions ici -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -12,15 +17,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MybestVideo"
         tools:targetApi="31" >
+
         <activity
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Assurez-vous que l'activité de votre fragment est déclarée ici si nécessaire -->
     </application>
 
 </manifest>

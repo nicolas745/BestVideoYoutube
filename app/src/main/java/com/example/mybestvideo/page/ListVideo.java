@@ -76,10 +76,9 @@ public class ListVideo extends Fragment {
                             List<Video> videos = videoDao.getVideosByCategoryId(selectedId);
                             videoItemList = new ArrayList<>();
 
-                            Log.d("d","aaadddddddddddddddddddddddddddddddddd");
                             Log.d("video size", videos.size()+"");
                             for (Video video : videos) {
-                                videoItemList.add(new VideoItem(video.name, video.url));
+                                videoItemList.add(new VideoItem(video.name, video.url, video.id));
                             }
                             // Mise à jour de l'interface utilisateur sur le thread principal
                             new Handler(Looper.getMainLooper()).post(() -> {

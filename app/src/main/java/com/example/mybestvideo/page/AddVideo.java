@@ -90,7 +90,7 @@ public class AddVideo extends Fragment {
                 if (!title.isEmpty() && !url.isEmpty()) {
 
                     Executors.newSingleThreadExecutor().execute(() -> {
-                        Video video = new Video("Test Video", "http://example.com", (int) id_select);
+                        Video video = new Video(title, url, (int) id_select);
                         try {
                             videoDao.insertAll(video);
                         } catch (Exception e) {
